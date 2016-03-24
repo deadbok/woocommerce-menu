@@ -2,8 +2,8 @@
 /*
 Plugin Name: Woocommerce menu
 Plugin URI: 
-Description: Creates a 3-column menu with links to pages.
-Version: 0.0.1
+Description: Creates a horizontal menu using product pictures, with links to pages.
+Version: 1.0.0
 Author: Martin Bo Kristensen Grønholdt
 Author URI: http://groenholdt.net
 */
@@ -32,6 +32,7 @@ function woocommerce_menu_handler($atts)
 		global $woocommerce_loop;
 		
 		$atts = shortcode_atts( array(
+			'entries' => '3',
 			'product_ids' => '1, 2, 3',
 			'product_page_ids' => '0, 0, 0'
 		), $atts);
@@ -46,7 +47,7 @@ function woocommerce_menu_handler($atts)
 <div class="woocommerce columns-4">
 	<ul class="products columns-4">
 <?php
-		for( $i = 0; $i < 3; $i++)
+		for( $i = 0; $i < $atts['entries']; $i++)
 		{
 			if ( $i === 0 )
 			{
